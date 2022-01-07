@@ -14,3 +14,4 @@ dependencies:
   - fastapi
   - uvicorn
   - git
+  - flake8
