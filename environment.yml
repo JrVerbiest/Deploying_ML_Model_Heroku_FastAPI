@@ -17,3 +17,4 @@ dependencies:
   - autopep8
   - pip:
     - flake8
+    - pylint
