@@ -2,15 +2,24 @@
 """
 import pickle
 
+def load_pkl(pkl_path):
+
+    pkl_file = open(pkl_path, "rb")
+    object_file = pickle.load(pkl_file)
+    pkl_file.close()
+
+    return object_file
+
+
 def save_pkl(data, pkl_path):
-    """ save trained model to a pkl-file.
+    """ save to a pkl-file.
     
     Parameters
     ----------
     data: 
         .
     pkl_path : str
-        path to save the model.
+        path
     
     Returns:
     --------
