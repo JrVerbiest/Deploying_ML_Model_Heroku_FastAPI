@@ -3,7 +3,8 @@
 """
 
 import sys
-sys.path.insert(0, './src/train_model')
+sys.path.append("./src/train_model")
+sys.path.append("./src/")
 
 from sklearn.model_selection import train_test_split
 
