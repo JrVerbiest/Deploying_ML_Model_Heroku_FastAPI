@@ -1,5 +1,5 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 
 # Optional: implement hyperparameter tuning.
@@ -18,10 +18,8 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-
-    rf = RandomForestClassifier(
-        n_estimators=50, max_features=5, min_samples_leaf=50)
-    model = rf.fit(X_train, y_train)
+    
+    model = LogisticRegression(random_state = 0,solver = 'lbfgs', multi_class = 'auto').fit(X_train, y_train)
 
     return model
 
@@ -47,6 +45,7 @@ def compute_model_metrics(y, preds):
     fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
+    
     return precision, recall, fbeta
 
 
@@ -55,7 +54,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : ???
+    model : model
         Trained machine learning model.
     X : np.array
         Data used for prediction.
@@ -64,6 +63,6 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    preds = model.predict(X)
+    pred = model.predict(X)
 
-    return preds
+    return pred
