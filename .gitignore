@@ -1,7 +1,4 @@
-.DS_Store
-starter_code/*.*
-starter_code/starter/ml/*.*
-starter_code/starter/*.*
-nd0821-c3-starter-code-master/*
-*.ipynb
+
 *.pyc
+nd0821-c3-starter-code-master/
+*.ipynb
