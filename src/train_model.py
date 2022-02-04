@@ -3,18 +3,20 @@
 """
 
 import sys
-sys.path.append("./src/train_model")
-sys.path.append("./src/")
+sys.path.insert(0, "./src/")
+sys.path.insert(1, "./train_model")
+
+print(sys.path)
 
 from sklearn.model_selection import train_test_split
 
 from data import import_data, process_data
 from model import train_model, inference, compute_model_metrics
-from helper import save_pkl
+from tm_helper import save_pkl
 
 # parameters
-PATHCLEANDATA = "./data/clean_census.csv"
-PATHMODEL = "./model/lr_model.pkl"
+PATHCLEANDATA = "../data/clean_census.csv"
+PATHMODEL = "../model/lr_model.pkl"
 
 # load in the data.
 data = import_data(PATHCLEANDATA)
