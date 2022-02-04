@@ -1,7 +1,6 @@
 import sys
 sys.path.insert(0, './src')
 sys.path.insert(0, './src/train_model')
-print(sys.path)
 
 import pytest
 from sklearn.linear_model import LogisticRegression
