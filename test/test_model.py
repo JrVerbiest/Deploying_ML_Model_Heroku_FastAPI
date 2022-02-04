@@ -26,10 +26,6 @@ def test_lr_model():
 def test_prediction():
     """test if pred array is a numpy array
     """
-    data = import_data("./data/clean_census.csv")
-    
-    train, test = train_test_split(data, test_size=0.20)
-
     cat_features = [
         "workclass",
         "education",
@@ -41,8 +37,11 @@ def test_prediction():
         "native-country",
     ]
 
+    data = import_data("./data/clean_census.csv")
+    
+    train, test = train_test_split(data, test_size=0.20)
     X_train, y_train, encoder_train, lb_train = process_data(train, categorical_features=cat_features, label="salary", training=True)   
-    X_test, y_test, encoder_test, lb_test = process_data(test, categorical_features=cat_features, label="salary", training=False, encoder=encoder_train, lb=lb_train)
+    X_test, _, _, _ = process_data(test, categorical_features=cat_features, label="salary", training=False, encoder=encoder_train, lb=lb_train)
 
     model = train_model(X_train, y_train)
     pred = inference(model, X_test)
@@ -75,7 +74,6 @@ def test_compute_model_metrics():
     lb = load_pkl(PATHLB)
 
     _, test = train_test_split(data, test_size=0.20)
-
     X_test, y_test, _, _ = process_data(test, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb)
 
     pred = inference(model, X_test)
