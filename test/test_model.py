@@ -22,7 +22,7 @@ def test_lr_model():
     model = load_pkl(PATHMODEL)
     assert isinstance(model, LogisticRegression)
 
-
+"""
 def test_prediction():
     """test if pred array is a numpy array
     """
@@ -46,4 +46,4 @@ def test_prediction():
 
     model = train_model(X_train, y_train)
     pred = inference(model, X_test)
-    
+"""    
