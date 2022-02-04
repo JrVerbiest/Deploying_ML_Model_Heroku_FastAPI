@@ -1,4 +1,6 @@
 import sys
+
+from pyrsistent import v
 sys.path.insert(0, './src')
 sys.path.insert(0, './src/train_model')
 
@@ -53,11 +55,6 @@ def test_prediction():
 def test_compute_model_metrics():
     """test if the metrics fall between 0 and 1
     """
-
-    data = import_data("./data/clean_census.csv")
-    
-    train, test = train_test_split(data, test_size=0.20)
-
     cat_features = [
         "workclass",
         "education",
@@ -69,10 +66,20 @@ def test_compute_model_metrics():
         "native-country",
     ]
 
-    X_train, y_train, encoder_train, lb_train = process_data(train, categorical_features=cat_features, label="salary", training=True)   
-    X_test, y_test, encoder_test, lb_test = process_data(test, categorical_features=cat_features, label="salary", training=False, encoder=encoder_train, lb=lb_train)
+    PATHCLEANDATA = "./data/clean_census.csv"
+    PATHMODEL = "./model/lr_model.pkl"
+    PATHENCODER = "./model/lr_encoder.pkl"
+    PATHLB = "./model/lr_lb.pkl"
 
-    model = train_model(X_train, y_train)
+    data = import_data(PATHCLEANDATA)
+    model = load_pkl(PATHMODEL)
+    encoder = load_pkl(PATHENCODER)
+    lb = load_pkl(PATHLB)
+
+    _, test = train_test_split(data, test_size=0.20)
+
+    X_test, y_test, _, _ = process_data(test, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb)
+
     pred = inference(model, X_test)
     precision, recall, fbeta = compute_model_metrics(y_test, pred)
 
