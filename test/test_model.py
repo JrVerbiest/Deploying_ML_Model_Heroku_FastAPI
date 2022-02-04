@@ -1,6 +1,4 @@
 import sys
-
-from pyrsistent import v
 sys.path.insert(0, './src')
 sys.path.insert(0, './src/train_model')
 
