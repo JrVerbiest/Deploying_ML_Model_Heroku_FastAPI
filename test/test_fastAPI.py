@@ -3,7 +3,7 @@ sys.path.insert(0, './src')
 sys.path.insert(0, './')
 
 from fastapi.testclient import TestClient
-from fastAPI import app
+from main import app
 
 client = TestClient(app)
 
