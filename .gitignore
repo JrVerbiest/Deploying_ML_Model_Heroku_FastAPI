@@ -1,4 +1,2 @@
 
-*.pyc
-nd0821-c3-starter-code-master/
-*.ipynb
+.ipynb_checkpoints/clean_data-checkpoint.ipynb
